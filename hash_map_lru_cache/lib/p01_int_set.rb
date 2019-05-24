@@ -29,29 +29,43 @@ class MaxIntSet
 end
 
 
+
+
+
+
+
+
+
+
 class IntSet
   def initialize(num_buckets = 20)
     @store = Array.new(num_buckets) { Array.new }
   end
 
   def insert(num)
+    self[num].push(num)
   end
 
   def remove(num)
+      if include?(num)
+        self[num].delete(num)
+      end
   end
 
   def include?(num)
+    self[num].include?(num)
   end
-
+  
   private
-
   def [](num)
     # optional but useful; return the bucket corresponding to `num`
+    @store[num % @store.length]
   end
 
   def num_buckets
     @store.length
   end
+
 end
 
 class ResizingIntSet
@@ -69,12 +83,14 @@ class ResizingIntSet
   end
 
   def include?(num)
+
   end
 
   private
 
   def [](num)
     # optional but useful; return the bucket corresponding to `num`
+    @store[num % @store.length]
   end
 
   def num_buckets
