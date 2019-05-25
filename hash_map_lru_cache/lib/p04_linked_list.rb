@@ -1,3 +1,4 @@
+
 class Node
   attr_reader :key
   attr_accessor :val, :next, :prev
@@ -16,10 +17,15 @@ class Node
   def remove
     # optional but useful, connects previous link to next link
     # and removes self from list.
+    
   end
 end
 
+
+
+
 class LinkedList
+  include Enumerable
   def initialize
   end
 
